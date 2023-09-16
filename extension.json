@@ -1,0 +1,43 @@
+{
+	"name": "CORSProxy",
+	"author": [
+		"[https://github.com/Func86 Func]"
+	],
+	"url": "https://github.com/Func86/CORSProxy",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.39.0"
+	},
+	"AutoloadClasses": {
+		"CORSProxyHooks": "includes/CORSProxyHooks.php"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "CORSProxyHooks::onBeforePageDisplay"
+	},
+	"config": {
+		"CORSProxyDomainList": {
+			"value": []
+		},
+		"CORSProxyPrefix": {
+			"value": ""
+		}
+	},
+	"ResourceModules": {
+		"ext.corsproxy.ajax-polyfill": {
+			"localBasePath": "resources",
+			"remoteExtPath": "CORSProxy/resources",
+			"packageFiles": [
+				"ajax-polyfill.js",
+				{
+					"name": "config.json",
+					"config": {
+						"domainList": "CORSProxyDomainList",
+						"prefix": "CORSProxyPrefix"
+					}
+				}
+			]
+		}
+	},
+	"manifest_version": 2
+}
